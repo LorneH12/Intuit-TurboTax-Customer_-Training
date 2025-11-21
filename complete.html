@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Intuit TurboTax Training – Complete</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="complete">
+  <div class="app-shell">
+    <header class="header">
+      <div class="logo-wrap">
+        <div class="logo-dot"></div>
+        <h1 class="logo" data-i18n="header_logo">Intuit TurboTax Customer Training</h1>
+      </div>
+
+      <div class="header-right">
+        <div class="theme-toggle">
+          <label class="theme-switch">
+            <input type="checkbox" id="theme-checkbox" checked />
+            <span class="slider"></span>
+          </label>
+          <span id="theme-label">Dark</span>
+        </div>
+
+        <div class="language-dropdown" id="language-dropdown">
+          <button
+            type="button"
+            class="language-trigger"
+            id="language-trigger"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+          >
+            English
+          </button>
+          <ul
+            class="language-menu"
+            id="language-menu"
+            role="listbox"
+            aria-label="Preferred language"
+          >
+            <li role="option" data-lang="en">English</li>
+            <li role="option" data-lang="es">Español</li>
+            <li role="option" data-lang="zh">中文 (Mandarin)</li>
+            <li role="option" data-lang="hi">हिन्दी</li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main id="app">
+      <section class="step active">
+        <div class="card card-hero fade-in">
+          <h2>
+            <span data-i18n="completion_title">Thank You</span>,
+            <span id="complete-name">Customer</span>!
+          </h2>
+
+          <p class="lead" data-i18n="completion_intro">
+            You’ve completed the Intuit TurboTax training introduction.
+          </p>
+
+          <p data-i18n="completion_nextsteps">
+            Next, you’ll receive an email with a link to the full TurboTax learning experience and a summary of what you can explore next.
+          </p>
+
+          <ul class="next-steps">
+            <li data-i18n="next_step_1">Check your email for your TurboTax training link.</li>
+            <li data-i18n="next_step_2">Set aside a few minutes on your calendar to complete the full experience.</li>
+            <li data-i18n="next_step_3">Bring your questions — we’ll show you where to get help when you need it.</li>
+          </ul>
+
+          <p class="note" data-i18n="completion_note">
+            Your completion has been recorded. Thank you for taking time to feel more confident and in control at tax time.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p data-i18n="footer_text">
+        Proof of Concept • Intuit TurboTax Customer Education
+      </p>
+    </footer>
+  </div>
+
+  <script src="js/analytics.js"></script>
+  <script src="js/translations.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
