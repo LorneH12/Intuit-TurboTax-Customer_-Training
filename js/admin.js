@@ -1,7 +1,7 @@
 // admin.js
 // Loads a JSON summary for the TurboTax training admin dashboard using JSONP
 
-// Base web app URL (no query params) – use your CURRENT deployed URL
+// Base web app URL (no query params)
 const SUMMARY_BASE =
   "https://script.google.com/macros/s/AKfycbzZP3DXUIniuLNupihHtBLujyOxHTgAB8TBnFeey2LZOks0hZXnwBBQKP6UOTZYNMk/exec";
 
@@ -58,7 +58,7 @@ function renderEventTable(eventCounts) {
   });
 }
 
-// JSONP callback – Apps Script will call this in the page
+// This is the JSONP callback that Apps Script will call
 function handleSummary(summary) {
   const errorBadge = document.getElementById("analytics-error-badge");
 
