@@ -2,7 +2,7 @@
 // Simple event tracking to your Google Apps Script endpoint
 
 const ANALYTICS_ENDPOINT =
-  "https://script.google.com/macros/s/AKfycbyDYDlaYYcTp87Ps2Be5harfGXz6zcOBL1ad4099qvemZEADM2IDt0LCS12RHbnISM/exec";
+  "https://script.google.com/macros/s/AKfycbwmm1HguMiy1S7PDBjU1pTihNgD94xcvmlAkaiiOawty3hcJbMc8VfiXrFUO6NbIqA/exec";
 
 function trackEvent(eventType, data = {}) {
   const payload = {
