@@ -1,17 +1,15 @@
 // admin.js
 // Loads a JSON summary for the TurboTax training admin dashboard using JSONP
 
-// IMPORTANT — your actual Apps Script Web App endpoint:
+// Base web app URL (no query params) – use your CURRENT deployed URL
 const SUMMARY_BASE =
   "https://script.google.com/macros/s/AKfycbzZP3DXUIniuLNupihHtBLujyOxHTgAB8TBnFeey2LZOks0hZXnwBBQKP6UOTZYNMk/exec";
 
-// Utility to fill text in a card
 function setText(id, value) {
   const el = document.getElementById(id);
   if (el) el.textContent = value;
 }
 
-// Renders the language count table
 function renderLanguageTable(byLanguage) {
   const tbody = document.getElementById("language-table-body");
   if (!tbody) return;
@@ -20,7 +18,9 @@ function renderLanguageTable(byLanguage) {
 
   const entries = Object.entries(byLanguage || {});
   if (!entries.length) {
-    tbody.innerHTML = `<tr><td class="empty" colspan="2">No data yet</td></tr>`;
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td class="empty" colspan="2">No data yet</td>`;
+    tbody.appendChild(tr);
     return;
   }
 
@@ -34,7 +34,6 @@ function renderLanguageTable(byLanguage) {
   });
 }
 
-// Renders event type counts
 function renderEventTable(eventCounts) {
   const tbody = document.getElementById("event-types-body");
   if (!tbody) return;
@@ -43,7 +42,9 @@ function renderEventTable(eventCounts) {
 
   const entries = Object.entries(eventCounts || {});
   if (!entries.length) {
-    tbody.innerHTML = `<tr><td class="empty" colspan="2">No events yet</td></tr>`;
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td class="empty" colspan="2">No events logged yet</td>`;
+    tbody.appendChild(tr);
     return;
   }
 
@@ -57,23 +58,22 @@ function renderEventTable(eventCounts) {
   });
 }
 
-// JSONP callback — Apps Script calls this function
+// JSONP callback – Apps Script will call this in the page
 function handleSummary(summary) {
   const errorBadge = document.getElementById("analytics-error-badge");
 
   try {
-    // Main cards
+    // Cards
     setText("total-learners-value", summary.totalLearners ?? "0");
     setText("completions-value", summary.completions ?? "0");
 
     const rate = summary.completionRate ?? 0;
-    setText("completion-rate-value", Math.round(rate * 100) + "%");
+    setText("completion-rate-value", (rate * 100).toFixed(0) + "%");
 
     // Tables
     renderLanguageTable(summary.byLanguage);
     renderEventTable(summary.eventCounts);
 
-    // Status badge
     if (errorBadge) {
       errorBadge.textContent = "Analytics loaded";
       errorBadge.classList.remove("error");
@@ -88,7 +88,6 @@ function handleSummary(summary) {
   }
 }
 
-// Loads JSONP from Apps Script
 function loadAdminSummary() {
   const errorBadge = document.getElementById("analytics-error-badge");
   if (errorBadge) {
@@ -96,7 +95,7 @@ function loadAdminSummary() {
     errorBadge.classList.remove("error", "success");
   }
 
-  // JSONP URL
+  // Build JSONP URL: ?mode=summary&callback=handleSummary
   const url =
     `${SUMMARY_BASE}?mode=summary&callback=handleSummary&_=${Date.now()}`;
 
@@ -104,8 +103,8 @@ function loadAdminSummary() {
   script.src = url;
   script.async = true;
 
-  script.onerror = function () {
-    console.error("Admin summary script load failed");
+  script.onerror = function (err) {
+    console.error("Admin summary script load failed:", err);
     if (errorBadge) {
       errorBadge.textContent = "Error loading analytics";
       errorBadge.classList.add("error");
