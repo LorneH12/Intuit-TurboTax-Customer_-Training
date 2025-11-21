@@ -2,7 +2,7 @@
 // Simple event tracking to your Google Apps Script endpoint
 
 const ANALYTICS_ENDPOINT =
-  "https://script.google.com/macros/s/AKfycbwmm1HguMiy1S7PDBjU1pTihNgD94xcvmlAkaiiOawty3hcJbMc8VfiXrFUO6NbIqA/exec";
+  "https://script.google.com/macros/s/AKfycbzZP3DXUIniuLNupihHtBLujyOxHTgAB8TBnFeey2LZOks0hZXnwBBQKP6UOTZYNMk/exec";
 
 function trackEvent(eventType, data = {}) {
   const payload = {
@@ -11,7 +11,6 @@ function trackEvent(eventType, data = {}) {
     ts: new Date().toISOString()
   };
 
-  // Fire-and-forget
   fetch(ANALYTICS_ENDPOINT, {
     method: "POST",
     mode: "no-cors",
