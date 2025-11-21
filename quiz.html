@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Intuit TurboTax Training – Quick Check</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="quiz">
+  <div class="app-shell">
+    <header class="header">
+      <div class="logo-wrap">
+        <div class="logo-dot"></div>
+        <h1 class="logo" data-i18n="header_logo">Intuit TurboTax Customer Training</h1>
+      </div>
+
+      <div class="header-right">
+        <div class="theme-toggle">
+          <label class="theme-switch">
+            <input type="checkbox" id="theme-checkbox" checked />
+            <span class="slider"></span>
+          </label>
+          <span id="theme-label">Dark</span>
+        </div>
+
+        <div class="language-dropdown" id="language-dropdown">
+          <button
+            type="button"
+            class="language-trigger"
+            id="language-trigger"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+          >
+            English
+          </button>
+          <ul
+            class="language-menu"
+            id="language-menu"
+            role="listbox"
+            aria-label="Preferred language"
+          >
+            <li role="option" data-lang="en">English</li>
+            <li role="option" data-lang="es">Español</li>
+            <li role="option" data-lang="zh">中文 (Mandarin)</li>
+            <li role="option" data-lang="hi">हिन्दी</li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main id="app">
+      <section class="step active">
+        <div class="card card-quiz fade-in">
+          <h2 data-i18n="quiz_title">Quick Check: TurboTax Feature Tour</h2>
+          <p class="lead" data-i18n="quiz_intro">
+            Answer one quick question to check your understanding before you move on.
+          </p>
+
+          <form id="quiz-form" class="quiz-form">
+            <fieldset>
+              <legend data-i18n="quiz_q1">
+                Which of the following is a key benefit of using TurboTax?
+              </legend>
+
+              <div class="quiz-options">
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="a" />
+                  <span data-i18n="quiz_q1_a">
+                    You must complete your entire tax return in one sitting with no breaks.
+                  </span>
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="b" />
+                  <span data-i18n="quiz_q1_b">
+                    TurboTax guides you step by step and checks for common mistakes along the way.
+                  </span>
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="c" />
+                  <span data-i18n="quiz_q1_c">
+                    TurboTax automatically files returns for every member of your family without your input.
+                  </span>
+                </label>
+
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="d" />
+                  <span data-i18n="quiz_q1_d">
+                    TurboTax can only be used by tax professionals, not customers.
+                  </span>
+                </label>
+              </div>
+            </fieldset>
+
+            <p id="quiz-feedback" class="note"></p>
+
+            <div class="actions">
+              <button type="submit" class="btn primary" data-i18n="quiz_submit">
+                Submit Answer
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p data-i18n="footer_text">
+        Proof of Concept • Intuit TurboTax Customer Education
+      </p>
+    </footer>
+  </div>
+
+  <script src="js/analytics.js"></script>
+  <script src="js/translations.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
