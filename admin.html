@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>TurboTax Training – Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+      /* Small admin-specific tweaks */
+      .admin-layout {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 3rem;
+      }
+
+      .admin-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .admin-header h1 {
+        font-size: 1.8rem;
+        font-weight: 700;
+      }
+
+      .admin-tag {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        opacity: 0.8;
+        letter-spacing: 0.08em;
+      }
+
+      .admin-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .admin-card {
+        background: rgba(10, 14, 30, 0.9);
+        border-radius: 14px;
+        padding: 1.25rem 1.5rem;
+        box-shadow: 0 20px 35px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(134, 196, 255, 0.15);
+      }
+
+      .admin-card h2 {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 0.35rem;
+        opacity: 0.85;
+      }
+
+      .admin-card .metric {
+        font-size: 1.8rem;
+        font-weight: 700;
+      }
+
+      .admin-card small {
+        font-size: 0.8rem;
+        opacity: 0.75;
+      }
+
+      .admin-section-title {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+      }
+
+      .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .pill {
+        border-radius: 999px;
+        padding: 0.25rem 0.75rem;
+        font-size: 0.8rem;
+        border: 1px solid rgba(134, 196, 255, 0.3);
+        background: rgba(8, 18, 40, 0.9);
+      }
+
+      .event-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.85rem;
+      }
+
+      .event-table th,
+      .event-table td {
+        padding: 0.45rem 0.6rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        text-align: left;
+      }
+
+      .event-table th {
+        font-weight: 600;
+        opacity: 0.85;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.75rem;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        padding: 0.15rem 0.6rem;
+        font-size: 0.75rem;
+        border: 1px solid rgba(134, 196, 255, 0.4);
+        background: rgba(8, 18, 40, 0.9);
+      }
+
+      .status-pill {
+        font-size: 0.78rem;
+        padding: 0.2rem 0.6rem;
+        border-radius: 999px;
+        border: 1px solid rgba(134, 196, 255, 0.5);
+      }
+    </style>
+  </head>
+  <body data-page="admin">
+    <div class="page-wrapper">
+      <header class="top-bar">
+        <div class="top-bar-left">
+          <div class="logo-mark"></div>
+          <div class="logo-text">
+            <span class="logo-title">Intuit TurboTax</span>
+            <span class="logo-subtitle">Customer Training Admin</span>
+          </div>
+        </div>
+        <div class="top-bar-right">
+          <span class="status-pill" id="admin-status-pill">
+            Loading analytics…
+          </span>
+        </div>
+      </header>
+
+      <main class="admin-layout" style="padding-top: 6rem;">
+        <div class="admin-header">
+          <div>
+            <div class="admin-tag">Admin View</div>
+            <h1>Training Analytics Overview</h1>
+            <p style="opacity: 0.8; font-size: 0.9rem; max-width: 540px;">
+              Live snapshot of your Intuit TurboTax training proof-of-concept:
+              learners, completions, and engagement by language.
+            </p>
+          </div>
+        </div>
+
+        <section class="admin-grid">
+          <article class="admin-card">
+            <h2>Total Learners</h2>
+            <div class="metric" id="metric-learners">–</div>
+            <small>Unique email addresses that started the experience.</small>
+          </article>
+
+          <article class="admin-card">
+            <h2>Completions</h2>
+            <div class="metric" id="metric-completions">–</div>
+            <small>Unique learners who reached quiz submission or intro complete.</small>
+          </article>
+
+          <article class="admin-card">
+            <h2>Completion Rate</h2>
+            <div class="metric" id="metric-completion-rate">–</div>
+            <small>Completions / Learners (percent).</small>
+          </article>
+        </section>
+
+        <section class="admin-card" style="margin-bottom: 1.5rem;">
+          <div class="admin-section-title">By Language</div>
+          <div class="pill-row" id="language-breakdown">
+            <!-- Filled by admin.js -->
+          </div>
+        </section>
+
+        <section class="admin-card">
+          <div class="admin-section-title">Event Types (Last Snapshot)</div>
+          <table class="event-table">
+            <thead>
+              <tr>
+                <th>Event Type</th>
+                <th>Count</th>
+              </tr>
+            </thead>
+            <tbody id="event-table-body">
+              <!-- Filled by admin.js -->
+            </tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+
+    <script src="js/analytics.js"></script>
+    <script src="js/admin.js"></script>
+  </body>
+</html>
