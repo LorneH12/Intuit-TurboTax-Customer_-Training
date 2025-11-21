@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Intuit TurboTax Customer Training – Welcome</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="welcome">
+  <div class="app-shell">
+    <header class="header">
+      <div class="logo-wrap">
+        <div class="logo-dot"></div>
+        <h1 class="logo" data-i18n="header_logo">Intuit TurboTax Customer Training</h1>
+      </div>
+
+      <div class="header-right">
+        <!-- Theme toggle -->
+        <div class="theme-toggle">
+          <label class="theme-switch">
+            <input type="checkbox" id="theme-checkbox" checked />
+            <span class="slider"></span>
+          </label>
+          <span id="theme-label">Dark</span>
+        </div>
+
+        <!-- Language dropdown -->
+        <div class="language-dropdown" id="language-dropdown">
+          <button
+            type="button"
+            class="language-trigger"
+            id="language-trigger"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+          >
+            English
+          </button>
+          <ul
+            class="language-menu"
+            id="language-menu"
+            role="listbox"
+            aria-label="Preferred language"
+          >
+            <li role="option" data-lang="en">English</li>
+            <li role="option" data-lang="es">Español</li>
+            <li role="option" data-lang="zh">中文 (Mandarin)</li>
+            <li role="option" data-lang="hi">हिन्दी</li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main id="app">
+      <section class="step active">
+        <div class="card card-hero fade-in">
+          <div class="card-pill" data-i18n="welcome_tag">Start here</div>
+          <h2 data-i18n="welcome_title">Welcome to Intuit TurboTax Training</h2>
+          <p class="lead" data-i18n="welcome_desc">
+            To personalize your experience, tell us a little about yourself before we get started.
+          </p>
+
+          <form id="welcome-form" class="form">
+            <div class="field">
+              <label for="name" data-i18n="label_name">Full Name</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+
+            <div class="field">
+              <label for="email" data-i18n="label_email">Email Address</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+
+            <div class="field">
+              <label for="language-input" data-i18n="label_language">Preferred Language</label>
+              <!-- hidden actual value; selection handled in dropdown -->
+              <input type="hidden" id="language-input" name="language" required />
+              <p class="field-hint" data-i18n="language_hint">
+                Use the language menu in the header to preview and select your language.
+              </p>
+            </div>
+
+            <button type="submit" class="btn primary" data-i18n="btn_continue">
+              Continue
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p data-i18n="footer_text">
+        Proof of Concept • Intuit TurboTax Customer Education
+      </p>
+    </footer>
+  </div>
+
+  <script src="js/analytics.js"></script>
+  <script src="js/translations.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
