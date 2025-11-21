@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Intuit TurboTax Training – Benefits</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="benefits">
+  <div class="app-shell">
+    <header class="header">
+      <div class="logo-wrap">
+        <div class="logo-dot"></div>
+        <h1 class="logo" data-i18n="header_logo">Intuit TurboTax Customer Training</h1>
+      </div>
+
+      <div class="header-right">
+        <div class="theme-toggle">
+          <label class="theme-switch">
+            <input type="checkbox" id="theme-checkbox" checked />
+            <span class="slider"></span>
+          </label>
+          <span id="theme-label">Dark</span>
+        </div>
+
+        <div class="language-dropdown" id="language-dropdown">
+          <button
+            type="button"
+            class="language-trigger"
+            id="language-trigger"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+          >
+            English
+          </button>
+          <ul
+            class="language-menu"
+            id="language-menu"
+            role="listbox"
+            aria-label="Preferred language"
+          >
+            <li role="option" data-lang="en">English</li>
+            <li role="option" data-lang="es">Español</li>
+            <li role="option" data-lang="zh">中文 (Mandarin)</li>
+            <li role="option" data-lang="hi">हिन्दी</li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main id="app">
+      <section class="step active">
+        <div class="card card-glass slide-up">
+          <h2 data-i18n="benefits_title">What’s In It For You?</h2>
+
+          <p class="lead" data-i18n="benefits_intro">
+            This short TurboTax experience helps you file with more confidence and get the most from your tax return.
+          </p>
+
+          <ul class="benefits">
+            <li data-i18n="benefit_1">See how TurboTax guides you step by step through your taxes.</li>
+            <li data-i18n="benefit_2">Learn how to avoid common mistakes that can slow down your refund.</li>
+            <li data-i18n="benefit_3">Discover where to get help when you have questions along the way.</li>
+          </ul>
+
+          <p class="note" data-i18n="benefits_note">
+            Most customers complete this introduction in just a few minutes. You’ll get quick wins you can use the next time you sign in.
+          </p>
+
+          <div class="actions">
+            <button id="btn-start-objectives" class="btn primary" data-i18n="btn_begin">
+              I’m Ready – Show Me How
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p data-i18n="footer_text">
+        Proof of Concept • Intuit TurboTax Customer Education
+      </p>
+    </footer>
+  </div>
+
+  <script src="js/analytics.js"></script>
+  <script src="js/translations.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
