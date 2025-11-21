@@ -3,7 +3,8 @@
 
 // Base web app URL (no query params)
 const SUMMARY_BASE =
-  "https://script.google.com/macros/s/AKfycbzZP3DXUIniuLNupihHtBLujyOxHTgAB8TBnFeey2LZOks0hZXnwBBQKP6UOTZYNMk/exec";
+  "https://script.google.com/macros/s/AKfycbZP3DXUIniuLNupihHtBLujyOxHTgAB8TBnFeey2LZOKs0hZXnwBBQKP6UOTZYNMk/exec";
+
 
 function setText(id, value) {
   const el = document.getElementById(id);
