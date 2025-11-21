@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Intuit TurboTax Training – Objectives</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="objectives">
+  <div class="app-shell">
+    <header class="header">
+      <div class="logo-wrap">
+        <div class="logo-dot"></div>
+        <h1 class="logo" data-i18n="header_logo">Intuit TurboTax Customer Training</h1>
+      </div>
+
+      <div class="header-right">
+        <div class="theme-toggle">
+          <label class="theme-switch">
+            <input type="checkbox" id="theme-checkbox" checked />
+            <span class="slider"></span>
+          </label>
+          <span id="theme-label">Dark</span>
+        </div>
+
+        <div class="language-dropdown" id="language-dropdown">
+          <button
+            type="button"
+            class="language-trigger"
+            id="language-trigger"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+          >
+            English
+          </button>
+          <ul
+            class="language-menu"
+            id="language-menu"
+            role="listbox"
+            aria-label="Preferred language"
+          >
+            <li role="option" data-lang="en">English</li>
+            <li role="option" data-lang="es">Español</li>
+            <li role="option" data-lang="zh">中文 (Mandarin)</li>
+            <li role="option" data-lang="hi">हिन्दी</li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main id="app">
+      <section class="step active">
+        <div class="card card-glass slide-up">
+          <h2 data-i18n="objectives_title">What You Will Learn</h2>
+
+          <p class="lead" data-i18n="objectives_intro">
+            By the end of this introduction, you will be able to:
+          </p>
+
+          <ol class="objectives">
+            <li data-i18n="obj_1">Explain how TurboTax walks you through your tax return from start to finish.</li>
+            <li data-i18n="obj_2">Identify where to find key features like help, support, and status updates.</li>
+            <li data-i18n="obj_3">Know your next steps to feel more confident the next time you use TurboTax.</li>
+          </ol>
+
+          <p class="note" data-i18n="objectives_note">
+            Keep these objectives in mind as you move into the full TurboTax learning experience. They’re your roadmap for feeling more confident at tax time.
+          </p>
+
+          <div class="actions">
+            <button id="btn-to-quiz" class="btn primary" data-i18n="btn_continue_wrapup">
+              Continue to Next Steps
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p data-i18n="footer_text">
+        Proof of Concept • Intuit TurboTax Customer Education
+      </p>
+    </footer>
+  </div>
+
+  <script src="js/analytics.js"></script>
+  <script src="js/translations.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
