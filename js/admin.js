@@ -95,9 +95,8 @@ function loadAdminSummary() {
     errorBadge.classList.remove("error", "success");
   }
 
-  // Build JSONP URL: ?mode=summary&callback=handleSummary
-  const url =
-    `${SUMMARY_BASE}?mode=summary&callback=handleSummary&_=${Date.now()}`;
+  // Build JSONP URL: just need callback now
+  const url = `${SUMMARY_BASE}?callback=handleSummary&_=${Date.now()}`;
 
   const script = document.createElement("script");
   script.src = url;
