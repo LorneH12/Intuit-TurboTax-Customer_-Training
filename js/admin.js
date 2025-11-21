@@ -2,7 +2,6 @@
 // Loads a JSON summary for the TurboTax training admin dashboard using JSONP
 
 // Base web app URL (no query params)
-// ⬇️ UPDATE THIS IF YOU RE-DEPLOY WITH A NEW URL
 const SUMMARY_BASE =
   "https://script.google.com/macros/s/AKfycbzZP3DXUIniuLNupihHtBLujyOxHTgAB8TBnFeey2LZOks0hZXnwBBQKP6UOTZYNMk/exec";
 
@@ -65,23 +64,15 @@ function handleSummary(summary) {
 
   try {
     // Cards
-    const totalLearners = summary && typeof summary.totalLearners === "number"
-      ? summary.totalLearners
-      : 0;
-    const completions = summary && typeof summary.completions === "number"
-      ? summary.completions
-      : 0;
-    const rate = summary && typeof summary.completionRate === "number"
-      ? summary.completionRate
-      : 0;
+    setText("total-learners-value", summary.totalLearners ?? "0");
+    setText("completions-value", summary.completions ?? "0");
 
-    setText("total-learners-value", String(totalLearners));
-    setText("completions-value", String(completions));
+    const rate = summary.completionRate ?? 0;
     setText("completion-rate-value", (rate * 100).toFixed(0) + "%");
 
     // Tables
-    renderLanguageTable(summary && summary.byLanguage);
-    renderEventTable(summary && summary.eventCounts);
+    renderLanguageTable(summary.byLanguage);
+    renderEventTable(summary.eventCounts);
 
     if (errorBadge) {
       errorBadge.textContent = "Analytics loaded";
