@@ -1,9 +1,9 @@
 // admin.js
-// Loads a JSON summary for the TurboTax training admin dashboard
+// Loads a JSON summary for the TurboTax training admin dashboard using JSONP
 
-// Use your existing web app URL + ?mode=summary
-const SUMMARY_ENDPOINT =
-  "https://script.google.com/macros/s/AKfycbzn27HXHggRSc2LnaNHoQfCmSZPhm0dVb12m_qVTAykiKyIuy8nxuTStoEIqr-WMBo/exec?mode=summary";
+// Base web app URL (no query params)
+const SUMMARY_BASE =
+  "https://script.google.com/macros/s/AKfycbzn27HXHggRSc2LnaNHoQfCmSZPhm0dVb12m_qVTAykiKyIuy8nxuTStoEIqr-WMBo/exec";
 
 function setText(id, value) {
   const el = document.getElementById(id);
@@ -58,25 +58,11 @@ function renderEventTable(eventCounts) {
   });
 }
 
-async function loadAdminSummary() {
+// This is the JSONP callback that Apps Script will call
+function handleSummary(summary) {
   const errorBadge = document.getElementById("analytics-error-badge");
 
   try {
-    if (errorBadge) {
-      errorBadge.textContent = "Loading analytics…";
-    }
-
-    const res = await fetch(SUMMARY_ENDPOINT);
-    const text = await res.text();
-
-    let summary;
-    try {
-      summary = JSON.parse(text);
-    } catch (err) {
-      console.error("Admin summary not valid JSON. Raw response:", text);
-      throw err;
-    }
-
     // Cards
     setText("total-learners-value", summary.totalLearners ?? "0");
     setText("completions-value", summary.completions ?? "0");
@@ -88,19 +74,44 @@ async function loadAdminSummary() {
     renderLanguageTable(summary.byLanguage);
     renderEventTable(summary.eventCounts);
 
-    // Clear error badge
     if (errorBadge) {
       errorBadge.textContent = "Analytics loaded";
       errorBadge.classList.remove("error");
       errorBadge.classList.add("success");
     }
   } catch (err) {
-    console.error("Admin summary load failed:", err);
+    console.error("Error rendering admin summary:", err);
+    if (errorBadge) {
+      errorBadge.textContent = "Error rendering analytics";
+      errorBadge.classList.add("error");
+    }
+  }
+}
+
+function loadAdminSummary() {
+  const errorBadge = document.getElementById("analytics-error-badge");
+  if (errorBadge) {
+    errorBadge.textContent = "Loading analytics…";
+    errorBadge.classList.remove("error", "success");
+  }
+
+  // Build JSONP URL: ?mode=summary&callback=handleSummary
+  const url =
+    `${SUMMARY_BASE}?mode=summary&callback=handleSummary&_=${Date.now()}`;
+
+  const script = document.createElement("script");
+  script.src = url;
+  script.async = true;
+
+  script.onerror = function (err) {
+    console.error("Admin summary script load failed:", err);
     if (errorBadge) {
       errorBadge.textContent = "Error loading analytics";
       errorBadge.classList.add("error");
     }
-  }
+  };
+
+  document.body.appendChild(script);
 }
 
 document.addEventListener("DOMContentLoaded", loadAdminSummary);
